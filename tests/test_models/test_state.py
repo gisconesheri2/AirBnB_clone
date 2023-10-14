@@ -13,7 +13,7 @@ class TestState(unittest.TestCase):
         """test the generation if the id"""
         state1 = State()
         state2 = State()
-        self.assertTrue(type(state1.id) == str)
+        self.assertTrue(type(state1.id) is str)
         self.assertFalse(state1.id == state2.id)
 
     def test_datetime(self):
@@ -22,7 +22,7 @@ class TestState(unittest.TestCase):
         state3.save()
         self.assertTrue(state3.updated_at > state3.created_at)
         int_dict = state3.to_dict()
-        self.assertTrue(type(int_dict['created_at']) == str)
+        self.assertTrue(type(int_dict['created_at']) is str)
 
     def test_object_instantiation_from_dict(self):
         """test a new object is created using attributes passed via a dict"""
@@ -34,5 +34,5 @@ class TestState(unittest.TestCase):
 
         self.assertTrue(state4.id == state5.id)
         self.assertTrue(state4.name == state5.name)
-        self.assertTrue(type(state4.created_at) == type(dt))
+        self.assertTrue(type(state4.created_at) is type(dt))
         self.assertFalse(state4 is state5)

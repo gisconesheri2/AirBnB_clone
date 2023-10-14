@@ -13,7 +13,7 @@ class TestReview(unittest.TestCase):
         """test the generation if the id"""
         review1 = Review()
         review2 = Review()
-        self.assertTrue(type(review1.id) == str)
+        self.assertTrue(type(review1.id) is str)
         self.assertFalse(review1.id == review2.id)
 
     def test_datetime(self):
@@ -22,7 +22,7 @@ class TestReview(unittest.TestCase):
         review3.save()
         self.assertTrue(review3.updated_at > review3.created_at)
         int_dict = review3.to_dict()
-        self.assertTrue(type(int_dict['created_at']) == str)
+        self.assertTrue(type(int_dict['created_at']) is str)
 
     def test_object_instantiation_from_dict(self):
         """test a new object is created using attributes passed via a dict"""
@@ -38,5 +38,5 @@ class TestReview(unittest.TestCase):
         self.assertTrue(review4.place_id == review5.place_id)
         self.assertTrue(review4.user_id == review5.user_id)
         self.assertTrue(review4.text == review5.text)
-        self.assertTrue(type(review4.created_at) == type(dt))
+        self.assertTrue(type(review4.created_at) is type(dt))
         self.assertFalse(review4 is review5)

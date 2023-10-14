@@ -12,7 +12,7 @@ class TestBaseModel(unittest.TestCase):
         """test the generation if the id"""
         base1 = BaseModel()
         base2 = BaseModel()
-        self.assertTrue(type(base1.id) == str)
+        self.assertTrue(type(base1.id) is str)
         self.assertFalse(base1.id == base2.id)
 
     def test_datetime(self):
@@ -21,7 +21,7 @@ class TestBaseModel(unittest.TestCase):
         base3.save()
         self.assertTrue(base3.updated_at > base3.created_at)
         int_dict = base3.to_dict()
-        self.assertTrue(type(int_dict['created_at']) == str)
+        self.assertTrue(type(int_dict['created_at']) is str)
 
     def test_object_instantiation_from_dict(self):
         """test a new object is created using attributes passed via a dict"""

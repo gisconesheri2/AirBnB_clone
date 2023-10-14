@@ -13,7 +13,7 @@ class TestCity(unittest.TestCase):
         """test the generation if the id"""
         city1 = City()
         city2 = City()
-        self.assertTrue(type(city1.id) == str)
+        self.assertTrue(type(city1.id) is str)
         self.assertFalse(city1.id == city2.id)
 
     def test_datetime(self):
@@ -22,7 +22,7 @@ class TestCity(unittest.TestCase):
         city3.save()
         self.assertTrue(city3.updated_at > city3.created_at)
         int_dict = city3.to_dict()
-        self.assertTrue(type(int_dict['created_at']) == str)
+        self.assertTrue(type(int_dict['created_at']) is str)
 
     def test_object_instantiation_from_dict(self):
         """test a new object is created using attributes passed via a dict"""
@@ -36,5 +36,5 @@ class TestCity(unittest.TestCase):
         self.assertTrue(city4.id == city5.id)
         self.assertTrue(city4.state_id == city5.state_id)
         self.assertTrue(city4.name == city5.name)
-        self.assertTrue(type(city4.created_at) == type(dt))
+        self.assertTrue(type(city4.created_at) is type(dt))
         self.assertFalse(city4 is city5)
