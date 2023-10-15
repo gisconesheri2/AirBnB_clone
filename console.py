@@ -14,12 +14,16 @@ import re
 
 
 def add_attribute(search_key, available_insts, args_list):
+    """update all instances that are the same as the search key
+    with atrributes in the args list
+    """
 
     args_passed = args_list
 
     if search_key in available_insts:
         obj = available_insts[search_key]
         try:
+            # args_passed[2] == attribute name
             value = getattr(obj, args_passed[2])
             try:
                 v1 = type(value)(args_passed[3])
@@ -36,6 +40,7 @@ def add_attribute(search_key, available_insts, args_list):
 
 
 class HBNBCommand(cmd.Cmd):
+    """console to manage the usage of classes"""
 
     prompt = "(hbnb) "
     acceptable_classes = ["BaseModel", "User", "State", "City",
