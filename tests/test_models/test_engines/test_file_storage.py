@@ -42,3 +42,13 @@ class TestFileStorage(unittest.TestCase):
         place3 = Place(**place_dict)
         place3.save()
         self.assertTrue(len(insts_dict.keys()) == keys_len + 2)
+
+    def test_file_path(self):
+        """test file path type"""
+        user1 = User()
+
+        # calling save on the object writes the object to the JSON file path
+        user1.save()
+        place1 = Place()
+        place1.save()
+        self.assertTrue(os.path.isfile("./file.json"))
